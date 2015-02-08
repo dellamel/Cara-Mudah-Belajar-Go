@@ -1,7 +1,7 @@
 # Cara-Mudah-Belajar-Go
-Perkenalkan kami adalah mahasiswa salah satu perguruan tinggi negeri yang ada di Inonesia. Nama kami adalah :
+Perkenalkan kami adalah mahasiswa salah satu perguruan tinggi negeri yang ada di Indonesia. Nama kami adalah :
 
-##Della Tiaraputri Aldrifisa dan Rizky Amelia 
+###Della Tiaraputri Aldrifisa dan Rizky Amelia 
 
 Saat ini kami diberikan kesempatan untuk belajar terkait dengan programing. Dan pada kesempatan ini, kami akan mencoba untuk menuliskan summary mengenai Programming-Go yang telah kami pelajari.
 
