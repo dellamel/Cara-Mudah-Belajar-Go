@@ -12,7 +12,7 @@ Tahapan yang digunakan dalam membuat aplikasi dengan Go cukup mudah, yaitu :
 4.	Mengompilasi *source code*
 5.	Menjalankan program untuk memastikan apakah program tersebut bekerja
 
-###File dan Folder
+###1. File dan Folder
 
 File adalah kumpulan data yang disimpan sebagai unit dengan nama tertentu. Semua jenis file disimpan dengan cara yang sama pada komputer, memiliki nama, ukuran dan jenis yang terkait. Biasanya jenis file ditandai dengan ekstensi file setelah nama pada bagian terakhir. Contoh : 
 
@@ -35,17 +35,17 @@ Pada dasarnya dalam pengaturan file dan folder yang terkait dengan pembuatan apl
 4.	Penginstallan Mercurial (hg)
 5.	Penginstallan Gorilla
 
-###Terminal
+###2. Terminal
 
 Sebagian besar interaksi kita dengan komputer dilakukan melalui interaksi antarmuka sebagai pengguna grafis (GUI). Digunakan keyboard, mouse dan layar sentuh untuk berinteraksi dengan tombol visual atau jenis lainnya dari kontrol yang ditampilkan pada layar. Sebelum GUI berkembang, terlebih dahulu digunakan terminal yaitu sebuah tekstual antarmuka  sederhana untuk komputer yang digunakan dengan memberikan perintah dan menerima balasan untuk memanipulasi tombol pada layar komputer. 
 
 Walaupun sebagian besar dunia komputasi telah meninggalkan terminal, kebenarannya adalah terminal masih fundamental yang digynakan oleh sebagian besar bahasa pemrogaman. Bahasa pemrogaman Go tidak berbeda, sehingga sebelum kita menulis program pada Go, terlebih dahulu kita perlu memiliki pemahaman dasar bagaimana terminal bekerja.  
 
-###*Text Editor*
+###3. *Text Editor*
 
 Sebagai programmer, alat utama yang digunakan untuk menulis program adalah Text Editor. Text Editor mirip dengan pengolahan kata seperti Microsoft Word. Text Editor yang biasa digunakan dalam bahasa Go adalah Sublime Text. 
 
-###*Tools*
+###4. *Tools*
 
 Go adalah bahasa pemrogaman yang dikompilasi, artinya *source code* diterjemahkan ke dalam bahasa yang dapat dimengerti oleh komputer. Terkait akan hal tersebut, sebelum program Go dibuat, kita membutuhkan Go compiler. Installer akan mengatur Go untuk anda secara otomatis. Informasi lebih lanjut dapat ditemukan di http://www.golang.org
 
@@ -122,10 +122,10 @@ Tipe data dikategorikan didalam suatu set yang terkait dengan nilai-nilai, diman
 2.	String
 3.	Booleans 
 
-###*1. Number* (Angka)
+###*1. Number* 
 Tipe data number dibagi menjadi dua jenis yaitu *integers* dan *floating*.
 
-####*1a. Integers*
+**Integers**
 
 *Integers* adalah bilangan bulat seperti halnya dalam matematika. Jenis angka ini tanpa komponen desimal. Tipe *integers* digunakan dalam program untuk mendeklarasikan suatu variable yang termasuk bilangan bulat. Dengan kelompok :
 
@@ -145,7 +145,7 @@ func main (){
     }
 ```
 
-###*1b. Floating*
+**Floating**
 
 *Floating* adalah tipe angka desimal, seperti halnya integer, jumlah digit untuk data float dideklarasikan dengan :
 
@@ -184,13 +184,13 @@ func main() {
 ###*3. Booleans*
 *Booleans* disini dapat dikatakan sebagai operator logika yang dapat menghasilkan output ‘TRUE’ dan ‘FALSE’. Nilai tersebut dapat dihasilkan dengan pengoperasian menggunakan operator ‘AND’, ‘OR’, dan ‘NOT’.
 
-####AND (&&)
+**AND (&&)**
 Operator && akan bernilai ‘TRUE’ apabila semua persyaratan yang diminta bernilai ‘TRUE’, namun jika salah satu persyaratannya bernilai ‘FALSE’ maka akan menghasilkan ‘FALSE’.
 
-####OR (||)
+**OR (||)**
 Pada operator OR akan menghasilkan “FALSE” jika semua persyaratan bernili ‘FALSE’, dapat dikatan operator OR ini merupakan kebalikan dari operator AND.
 
-####NOT (!)
+**NOT (!)**
 Operator NOT ini akan mengasilkan keluaran yang merupakan kebalikan dari nilai yang diperintahkan atau dioperasikan.
 Contoh :
 
