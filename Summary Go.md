@@ -184,13 +184,13 @@ func main() {
 ###*3. Booleans*
 *Booleans* disini dapat dikatakan sebagai operator logika yang dapat menghasilkan output ‘TRUE’ dan ‘FALSE’. Nilai tersebut dapat dihasilkan dengan pengoperasian menggunakan operator ‘AND’, ‘OR’, dan ‘NOT’.
 
-####3a. AND (&&)
+####AND (&&)
 Operator && akan bernilai ‘TRUE’ apabila semua persyaratan yang diminta bernilai ‘TRUE’, namun jika salah satu persyaratannya bernilai ‘FALSE’ maka akan menghasilkan ‘FALSE’.
 
-####3b. OR (||)
+####OR (||)
 Pada operator OR akan menghasilkan “FALSE” jika semua persyaratan bernili ‘FALSE’, dapat dikatan operator OR ini merupakan kebalikan dari operator AND.
 
-####3c. NOT (!)
+####NOT (!)
 Operator NOT ini akan mengasilkan keluaran yang merupakan kebalikan dari nilai yang diperintahkan atau dioperasikan.
 Contoh :
 
