@@ -136,12 +136,14 @@ contoh program Go nya :
 ```go
 package main
 
-import “fmt”
-    
-func main (){
-        var x int
-        x := 9
-        fmt.Println(x)
+import "fmt"
+
+func main() {
+	var x int
+	x = 9
+	//bisa juga ditulis x:= arti (:=) sudah dideklarasikan
+	fmt.Println(x)
+}
     }
 ```
 
@@ -156,14 +158,14 @@ contoh program Go nya :
 
 ```go
 package main
-    
-    import “fmt”
-    
-    func main (){
-        var x float
-        x := 9.358463
-        fmt.Println(x)
-    }
+
+import "fmt"
+
+func main() {
+	var x float32
+	x = 9.358463
+	fmt.Println(x)
+}
 ```
 
 ###*2. String*
@@ -173,12 +175,12 @@ Pada bab sebelumnya, dimana anda diminta untuk membuat program dengan output “
 Contoh program Go nya :
 ```go
 package main
-    
+
 import "fmt"
-    
+
 func main() {
-    fmt.Println(len("Hello World"))
-    }
+	fmt.Println("Hello World")
+}
 ```
 
 ###*3. Booleans*
@@ -216,8 +218,9 @@ package main
 import "fmt"
 
 func main() {
-    var x string = "Hello World"
-    fmt.Println(x)
+	var x string = "Hello World"
+	//variable (var), x (nama variable), Hello World (isi variable)
+	fmt.Println(x)
 }
 ```
 
@@ -241,7 +244,7 @@ Didalam pengembangan perangkat lunak, penamaan suatu *variable* merupakan hal ya
 2. Huruf pertama dari kata-kata selanjutnya adalah huruf besar dan seterusnya huruf kecil. Contoh :
     
     catsName := “Brown”
-    fmt.Println (“My Cat’s name is”, catasName)
+    fmt.Println (“My Cat’s name is”, catsName)
 
 Penulisan huruf kapital pada kata kedua untuk memanipulasi pemberian spasi.
 
@@ -255,32 +258,40 @@ Penulisan huruf kapital pada kata kedua untuk memanipulasi pemberian spasi.
 For digunakan untuk mengulang daftar pernyataan (blok) beberapa kali sehingga kita tidak perlu menuliskannya secara berulang, cukup tuliskan perintahnya sekali saja. Contoh program untuk menampilkan angka 1 sampai 10:
 
 ```go
+package main
+
+import "fmt"
+
 func main() {
-    for i := 1; i <= 10; i++ {
-        fmt.Println(i)
-    }
+	for a := 1; a <= 9; a++ {
+		fmt.Println(a)
+	}
 }
 ```
 
-* i merupakan variabel yang digunakan untuk mengontrol bilangan atau angka yang ingin di tampilkan.
-* Alur iterasi program di atas adalah: Untuk i=1 di cek apakah nilai i masih kecil atau sama dengan 10. Jika i bernilai kecil atau sama dengan 10 (pernyataan *TRUE*) maka akan dijalankan perintah selanjutnya yaitu `fmt.Println(i)` yang artinya nilai i akan ditampilkan selama masih memenuhi syarat kecil atau sama dengan 10. Setelah bilangan pertama ditampilakan maka nilai i akan bertambah melalui perintah `i++`. Nilai i selanjutnya akan menjalankan perintah yang sama dengan yang pertama. *Looping* akan berhenti saat i bernilai lebih dari 10.
+* a merupakan variabel yang digunakan untuk mengontrol bilangan atau angka yang ingin di tampilkan.
+* Alur iterasi program di atas adalah: Untuk a=1 di cek apakah nilai a masih kecil atau sama dengan 9. Jika a bernilai kecil atau sama dengan 9 (pernyataan *TRUE*) maka akan dijalankan perintah selanjutnya yaitu `fmt.Println(a)` yang artinya nilai a akan ditampilkan selama masih memenuhi syarat kecil atau sama dengan 9. Setelah bilangan pertama ditampilakan maka nilai a akan bertambah melalui perintah `a++`. Nilai a selanjutnya akan menjalankan perintah yang sama dengan yang pertama. *Looping* akan berhenti saat a bernilai lebih dari 9.
 
 ###2. If
 
 If merupakan *statement* logika yang biasanya diikuti oleh *statement* `else`. Perintah `if` akan dijalankan apabila pernyataan bernilai *TRUE*, namun jika pernyataan bernilai *FALSE* maka yang akan dijalankan adalah perintah pada bagian `else`. `if` dan `else` biasanya digunakan bersamaan dengan `for`. Contohnya adalah untuk menampilkan angka 1 sampai 10 serta jenisnya apakan bilangan ganjil atau genap.
 
 ```go
+package main
+
+import "fmt"
+
 func main() {
-    for i := 1; i <= 10; i++ {
-        if i % 2 == 0 {
-            fmt.Println(i, "genap")
-        } else {
-            fmt.Println(i, "ganjil")
-        }
-    }
+	for a := 1; a <= 9; a++ {
+		if a%2 == 0 {
+			fmt.Println(a, "genap")
+		} else {
+			fmt.Println(a, "ganjil")
+		}
+	}
 }
 ```
-* Alur iterasi program ini adalah: saat i=1 maka akan di cek terlebih dahulu apakan nilai i lebih kecil atau sama dengan 10. Apabila i kecil atau sama dengan 10 maka aka dilakukan perintah selanjutnya yaitu `if i % 2 == 0`. Jika pernyataan ini bernilai *TRUE* maka akan dijalankan perintah `fmt.Println(i, "genap")` yang akan menampilkan nilai i tersebut dan disertai dengan *string* 'genap'. Namun apabila pernyataan bernilai *FALSE* (i tidak habis dibagi 2) maka akan dijalankan perintah `fmt.Println(i, "ganjil")`. Begitu seterusnya hingga program akan berhenti apabila nilai i lebih besar dari 10.
+* Alur iterasi program ini adalah: saat a=1 maka akan di cek terlebih dahulu apakan nilai a lebih kecil atau sama dengan 9. Apabila a kecil atau sama dengan 9 maka aka dilakukan perintah selanjutnya yaitu `if a % 2 == 0`. Jika pernyataan ini bernilai *TRUE* maka akan dijalankan perintah `fmt.Println(a, "genap")` yang akan menampilkan nilai a tersebut dan disertai dengan *string* 'genap'. Namun apabila pernyataan bernilai *FALSE* (a tidak habis dibagi 2) maka akan dijalankan perintah `fmt.Println(a, "ganjil")`. Begitu seterusnya hingga program akan berhenti apabila nilai a lebih besar dari 9.
 
 ###3. Switch
 
@@ -345,20 +356,20 @@ Simpan program berikut dengan nama array2.go
 ```go
 package main
 
-import “fmt”
+import "fmt"
 
 func main() {
-    var x [5]float64
-    x[0] = 67
-    x[1] = 78
-    x[2] = 84
-    x[3] = 98
-    x[4] = 79
-    var total float64 = 0.0
-    for i := 0; i < len(x); i++ {
-        total += x[i]
-    }
-    fmt.Println(total / float64(len(x)))
+	var x [5]float64
+	x[0] = 67
+	x[1] = 78
+	x[2] = 84
+	x[3] = 98
+	x[4] = 79
+	var total float64 = 0.0
+	for i := 0; i < len(x); i++ {
+		total += x[i]
+	}
+	fmt.Println(total / float64(len(x)))
 }
 ```
 
@@ -377,14 +388,14 @@ Disimpan dengan nama slice.go
 ```go
 package main
 
-import “fmt”
- 
+import "fmt"
+
 func main() {
-    slice1 := []int{1,2,3}
-    slice2 := make([]int, 2)
-    copy(slice2, slice1)
-    
-    fmt.Println(slice1, slice2)
+	slice1 := []int{1, 2, 3}
+	slice2 := make([]int, 2)
+	copy(slice2, slice1)
+
+	fmt.Println(slice1, slice2)
 }
 ```
 Setelah dijalankan, output yang diperoleh adalah :
@@ -434,17 +445,19 @@ Pada program yang sebelumnya kita bekerja dengan hanya satu fungsi. Pada bagian 
 
 ```go
 package main
+
 import "fmt"
+
 func average(xs []float64) float64 {
-    total := 0.0
-    for _, v := range xs {
-        total += v
-    }
-    return total / float64(len(xs))
+	total := 0.0
+	for _, v := range xs {
+		total += v
+	}
+	return total / float64(len(xs))
 }
 func main() {
-    xs := []float64{98,93,77,82,83}
-    fmt.Println(average(xs))
+	xs := []float64{98, 93, 77, 82, 83}
+	fmt.Println(average(xs))
 }
 ```
 
@@ -472,15 +485,19 @@ Fungsi f mengembalikan dua nilai `(int, int)` yaitu 5 dan 6 yang selanjutnya dip
 Fungsi jenis ini merupakan fungsi yang hanya dapat dijalankan pada bahasa Go. Dengan fungsi ini kita dapat membuat suatu variabel yang dapat berisi nol atau lebih nilai dengan menggunakan `...` sebelum tipe variabel.
 
 ```go
+package main
+
+import "fmt"
+
 func add(args ...int) int {
-    total := 0
-    for _, v := range args {
-        total += v
-    }
-    return total
+	total := 0
+	for _, v := range args {
+		total += v
+	}
+	return total
 }
 func main() {
-    fmt.Println(add(1,2,3))
+	fmt.Println(add(1, 2, 3))
 }
 ```
 
@@ -492,12 +509,14 @@ Dengan program diatas kita dapat memasukkan nilai ke dalam fungsi dalam jumlah y
 
 ```go
 package main
+
 import "fmt"
+
 func main() {
-    add := func(x, y int) int {
-        return x + y
-    }
-    fmt.Println(add(1,1))
+	add := func(x, y int) int {
+		return x + y
+	}
+	fmt.Println(add(1, 1))
 }
 ```
 
