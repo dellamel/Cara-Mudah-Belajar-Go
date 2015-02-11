@@ -542,29 +542,443 @@ Misalnya kita ingin menghitung nilai faktorial dari angka 2 melalui perintah: `f
 
 Fungsi main memanggil fungsi factorial dan memberikan nilai x=2. Dalam fungsi factorial nilai x tidak sama dengan 0 maka perintah selanjutnya yang akan dieksekusi adalah `return x * factorial(x-1)` yang berarti fungsi factorial tersebut akan memanggil dirinya sendiri dengan nilai x=1. Saat x=1 fungsi factorial akan memanggil kembali dirinya dengan x=0. Saat x=0 maka pernyataan `if` bernilai *TRUE* sehingga akan mengembalikan nilai 1. Pada akhirnya fungsi factorial akan mengembalikan nilai `2*1*1=2`. Jadi dapat dibuktikan bahwa nilai faktorial dari 2 adalah sama dengan 2.
 
+##BAB 9. STRUCT AND INTERFACE
+
+Perhatikan program berikut:
+
+```go
+package main
+import (
+	"fmt"
+	"math"
+)
+
+func distance(x1, y1, x2, y2 float64) float64 {
+	a := x2 - x1
+	b := y2 - y1
+	return math.Sqrt(a*a + b*b)
+}
+
+func rectangleArea(x1, y1, x2, y2 float64) float64 {
+	l := distance(x1, y1, x1, y2)
+	w := distance(x1, y1, x2, y1)
+	return l * w
+
+}
+
+func circleArea(x, y, r float64) float64 {
+	return math.Pi * r*r
+}
+
+func main() {
+	var rx1, ry1 float64 = 0, 0
+	var rx2, ry2 float64 = 10, 10
+	var cx, cy, cr float64 = 0, 0, 5
+	fmt.Println(rectangleArea(rx1, ry1, rx2, ry2))
+	fmt.Println(circleArea(cx, cy, cr))
+}
+```
+		
+Mari kita gunakan konsep Struct untuk program di atas.
+Kita representasikan data-data lingkaran sebagai berikut:
+
+		
+```go
+type Circle struct {
+	x float64
+	y float64
+	r float64
+}
+```
+		
+	
+Keyword type membuat tipe baru, pada contoh di atas tipe baru ini adalah Circle. Keyword struct mendefinisikan bahwa kita membuat tipe struct yang berisi data-data.
+Tipe Circle dapat disederhanakan pengetikannya menjadi:
+
+```go
+type Circle struct {
+	x, y, r float64
+}
+```
+
+Untuk membuat variabel, kita ketik program berikut :
+
+```go
+var c Circle
+atau
+
+c := new(Circle)
+atau
+
+c := Circle{x: 0, y: 0, r: 5}
+atau
+
+c := Circle{0, 0, 5}
+Kita dapat mengakses data dalam struct menggunakan . (titik).
+
+ fmt.Println(c.x, c.y, c.r)
+
+c.x = 10
+c.y = 5	
+```
+Dan akhirnya, kita modifikasi fungsi circleArea
+
+ ```go
+ func circleArea(c Circle) float64 {
+
+	return math.Pi * c.r*c.r 
+
+}
+```	
+di fungsi main kita modifikasi:
+```go
+ c := Circle{0, 0, 5}
+fmt.Println(circleArea(c))
+```
+
+**Method**
+Kita gunakan teknik yang dinamakan method untuk memodifikasi lagi fungsi circleArea
+
+```go
+func (c *Circle) area() float64 {
+	return math.Pi * c.r*c.r
+}
+```
+
+Dan selanjutnya kita gunakan teknik method untuk rectangleArea:
+
+```go
+ type Rectangle struct {
+	x1, y1, x2, y2 float64
+}
+
+func (r *Rectangle) area() float64 {
+
+	l := distance(r.x1, r.y1, r.x1, r.y2)
+	w := distance(r.x1, r.y1, r.x2, r.y1)
+	return l * w
+}
+		
+di fungsi main:
+
+ r := Rectangle{0, 0, 10, 10}
+
+fmt.Println(r.area())
+```
+		
+Kode akhir dari programnya adalah:
+```go
+package main 
+
+import (
+	"fmt"
+	"math"
+)
+
+type Rectangle struct {
+	x1, y1, x2, y2 float64
+}
+
+type Circle struct {
+	x, y, r float64
+}
+
+func distance(x1, y1, x2, y2 float64) float64 {
+	a := x2 - x1
+	b := y2 - y1
+	return math.Sqrt(a*a + b*b)
+}
+
+func (c *Circle) area() float64 {
+	return math.Pi * c.r*c.r 
+}
+
+func (r *Rectangle) area() float64 {
+	l := distance(r.x1, r.y1, r.x1, r.y2)
+	w := distance(r.x1, r.y1, r.x2, r.y1)
+	return l * w
+}
+
+func main() {
+	c := Circle{0, 0, 5}
+	r := Rectangle{0, 0, 10, 10}
+	fmt.Println(r.area())
+	fmt.Println(c.area())
+}
+```
+		
+**Interface**
+Luas persegi panjang dan lingkaran memakai method yang sama. Kita dapat menggunakan interface, contohnya:
+```go 
+type Shape interface {
+	area() float64
+}
+```
+		
+Seperti struct, interface juga dibuat menggunakan keyword type, diikuti nama, dan keyword interface.
+Kemudian:
+```go
+ func totalArea(shapes ...Shape) float64 {
+	var area float64
+	for _, s := range shapes {
+		area += s.area()
+	}
+	return area
+}
+```
+		
+Fungsi di atas dapat kita panggil:
+
+ ```go
+ fmt.Println(totalArea(& c, &r))
+```
 
 
+Interface juga dapat diisi:
+```go
+type MultiShape struct {
+	shapes []Shape
+}
+```
+		
+Kemudian:
+```go
+ func (m *MultiShape) area() float64 {
+	var area float64
+	for _, s := range m.shapes {
+		area += s.area()
+	{
+	return area
+}
+```
+		
+Dan sekarang, MultiShape dapat memiliki Circle, Rectangle, atau bentuk lainnya.
 
+##BAB 13. PACKAGE UTAMA
 
+**Strings**
+Penggunaan package strings contohnya:
+```go
+ 			package main
 
+			import (
+				"fmt"
+				"strings"
+			)
 
+			func main() {
+				fmt.Println(
+					strings.Contains("test", "es"), // true
+					strings.Count("test", "t"), // 2
+					strings.HasPrefix("test", "te"), // true
+					strings.HasSuffix("test", "st"), // true
+					strings.Index("test", "e"), // 1
+					strings.Join([]string{"a","b"}, "-"), //a-b
+					strings.Repeat("a", 5), //aaaaa
+					strings.Replace("aaa", "a", "b", 2), //bba
+					strings.Split("a-b-c-d-e", "-"), // []string{"a","b","c","d","e"}
+					strings.ToLower("TEST"), // "test"
+					strings.ToUpper("test"), //"TEST"
+				)
+			}
+```		
+**Input/Output (io)**
+Fungsi di dalam io yaitu Read, Write, Copy
 
+**Files & Folders (os)**
+Untuk membuka file, ada fungsi Open, contoh penggunaannya:
+```go
+ 			package main 
 
+			import (
+				"fmt"
+				"os"
+			)
 
+			func main() {
+				file, err := os.Open("test.txt")
+				if err != nil {
+					return
+				}
+				defer file.Close()
 
+				stat, err := file.Stat()
+				if err != nil {
+					return
+				}
 
+				bs := make([]byte, stat.Size())
+				_, err = file.Read(bs)
+				if err != nil {
+					return
+				}
 
+				str := string(bs)
+				fmt.Println(str)
+			}
+```
 
+**Errors**
+Error merupakan tipe yang ada di Go. Contoh penggunaanya
 
+ 			package main 
 
+			import (
+				"fmt"
+				"errors"
+			)
 
+			func main() {
+				err := errors.New("error message")
+				fmt.Println(err)
+			}
+		
+**Containers & Sort**
+**List**
+Contoh penggunaanya:
+```go
+ 			package main 
 
+			import ("fmt"; "container/list")
 
+			func main() {
+				var x list.List
+				x.PushBack(1)
+				x.PushBack(2)
+				x.PushBack(3)
 
+				for e := x.Front(); e != nil; e=e.Next() {
+					fmt.Println(e.Value.(int))
+				}
+			}
+```
 
+**Sort**
+Contoh penggunaannya:
+```go
+ 			package main 
 
+			import ("fmt"; "sort")
 
+			type Person struct {
+				Name string
+				Age int
+			}
 
+			type ByName []Person
 
+			func (this ByName) Len() int {
+				return len(this)
+			}
+			func (this ByName) Less(i, j int) bool {
+				return this[i].Name < this[j].Name
+			}
+			func (this ByName) Swap(i, j int) {
+				this[i], this[j] = this[j], this[i]
+			}
 
+			func main() {
+				kids := []Person{
+					{"Ujang", 9},
+					{"Jajang", 10},
+				}
+				sort.Sort(ByName(kids))
+				fmt.Println(kids)
+			}
+```		
 
+**Server**
+Contoh penggunaannya:
+```go
+ 			package main 
+
+			import (
+				"encoding/gob"
+				"fmt"
+				"net"
+			)
+
+			func server() {
+				ln, err := net.Listen("tcp", ":9999")
+				if err != nil {
+					fmt.Println(err)
+					return
+				}
+				for {
+					c, err := ln.Accept()
+					if err != nil {
+						fmt.Println(err)
+						continue
+					}
+
+					go handleServerConnection(c)
+				}
+			}
+
+			func handleServerConnection(c net.Conn) {
+				var msg string
+				err := gob.NewDecoder(c).Decode(&msg)
+				if err != nil {
+					fmt.Println(err)
+				} else {
+					fmt.Println("Received", msg)
+				}
+
+				c.Close()
+			}
+
+			func client() {
+				c, err := net.Dial("tcp", "127.0.0.1:9999")
+				if err != nil {
+					fmt.Println(err)
+					return
+				}
+
+				msg := "Hello World"
+				fmt.Println("Sending", msg)
+				err = gob.NewEncoder(c).Encode(msg)
+				if err != nil {
+					fmt.Println(err)
+				}
+
+				c.Close()
+			}
+
+			func main() {
+				go server()
+				go client()
+
+				var input string
+				fmt.Scanln(&input)
+			}
+```
+
+**HTTP**
+Contoh penggunaanya:
+```go
+ 			package main 
+
+			import ("net/http"; "io")
+
+			func hello(res http.ResponseWriter, req *http.Request) {
+				res.Header().Set(
+					"Content-Type",
+					"text/html",
+				)
+				io.WriteString(
+					res,
+					`
+			
+					Hello World!
+				
+			`,
+				)
+			}
+
+			func main() {
+				http.HandleFunc("/hello", hello)
+				http.ListenAndServe(":9090", nil)
+			}
+```		
+Lalu jalankan melalui command prompt dengan mengetik go run namafile.go
+Buka browser, ketik di adress bar localhost:9090/hello. Akan tampil tulisan Hello World! di browser anda.
