@@ -542,6 +542,37 @@ Misalnya kita ingin menghitung nilai faktorial dari angka 2 melalui perintah: `f
 
 Fungsi main memanggil fungsi factorial dan memberikan nilai x=2. Dalam fungsi factorial nilai x tidak sama dengan 0 maka perintah selanjutnya yang akan dieksekusi adalah `return x * factorial(x-1)` yang berarti fungsi factorial tersebut akan memanggil dirinya sendiri dengan nilai x=1. Saat x=1 fungsi factorial akan memanggil kembali dirinya dengan x=0. Saat x=0 maka pernyataan `if` bernilai *TRUE* sehingga akan mengembalikan nilai 1. Pada akhirnya fungsi factorial akan mengembalikan nilai `2*1*1=2`. Jadi dapat dibuktikan bahwa nilai faktorial dari 2 adalah sama dengan 2.
 
+##BAB 8. POINTER
+Perhatikan fungsi berikut ini:
+
+``` go
+func zero(x int) {
+	x = 0
+}
+func main() {
+	x := 5
+	zero(x)
+	fmt.Println(x)
+}
+```
+Coba amati bahwa tampilan di program tetap menunjukkan `x = 5`. Fungsi `zero` tidak akan memodifikasi variabel `x`. Lantas, bagaimana cara mengubah nilai variabel `x`? Caranya yaitu dengan menggunakan konsep *pointer*.
+``` go
+func zero(xPtr *int) {
+	*xPtr = 0
+}
+func main() {
+	x := 5
+	zero(&x)
+	fmt.Println(x)
+}
+```
+###1. Operator * dan &
+Pointer direpresentasikan dengan menggunakan tanda `*` (asterisk) diikuti dengan tipe variabelnya. Contohnya `xPtr *int` artinya `xPtr` menunjuk ke suatu alamat variabel bertipe `int`.
+
+Operator `&` (ampersand) digunakan untuk mencari alamat variabel. Contohnya `&x` akan menghasilkan tipe `*int`. Hal inilah yang memungkinkan untuk melakukan modifikasi variabel. Contoh lainnya yaitu ketika memakai fungsi `fmt.Scanln(&x)`.
+
+
+
 ##BAB 9. STRUCT AND INTERFACE
 
 Perhatikan program berikut:
