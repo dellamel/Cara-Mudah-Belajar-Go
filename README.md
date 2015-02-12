@@ -10,7 +10,7 @@ Tulisan pertama kami ini  adalah summary dari buku karangan **Caleb Doxsey** yan
 
 Kami mencoba untuk membagi pengetahuan kepada anda untuk mempelajari Programming-Go dengan cara yang sederhana.
 
-![](http://cdn2.techtalkshub.com/wp-content/uploads/2014/03/appenginegophercolor.jpg)
+![](http://www.golangprojects.com/img/golangprojects_com_gopher2.png)
 
 
 untuk membaca silahkan klik disini [Summary Go] (https://github.com/dellamel/Cara-Mudah-Belajar-Go/blob/master/Summary%20Go.md)
